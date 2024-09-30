@@ -115,6 +115,12 @@ class MoviesListViewController: UIViewController, UITabBarDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if let movieDetails = self.storyboard?.instantiateViewController(withIdentifier: "movieDetails") as? MovieDetailsViewController {
+            guard let movieID = moviesViewModel.movies?[indexPath.section].id else { return }
+            
+            movieDetails.movieDetailsViewModel = MovieDetailsViewModel(movieID: movieID)
+            self.navigationController?.pushViewController(movieDetails, animated: true)
+        }
     }
    
 }
