@@ -50,12 +50,18 @@ class MovieDetailsViewController: UIViewController {
     
     func updateUI() {
         guard let movie = movieDetailsViewModel.movie else { return }
-        movieTitle.text = movie.title
+        movieTitle.text = movie.title ?? ""
         movieRating.text = "\(Int(movie.vote_average ?? 0.0))/10"
-        movieDate.text = movie.release_date
-        movieRuntime.text = "\(movie.runtime ?? 0) m"
-        movieOverview.text = movie.overview
+        movieDate.text = movie.release_date ?? ""
+        movieOverview.text = movie.overview ?? ""
         
+        if let movieTime = movie.runtime {
+            let hours = movieTime / 60
+            let minutes = movieTime % 60
+            movieRuntime.text = "\(hours)h \(minutes)m"
+        } else {
+            movieRuntime.text = ""
+        }
         
         if let imageUrl = movie.backdrop_path {
             let fullImageUrl = "https://image.tmdb.org/t/p/w500\(imageUrl)"
