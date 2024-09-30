@@ -118,9 +118,7 @@
 				26FFA10F2CAAE2B5003128C1 /* AppDelegate.swift */,
 				26FFA1112CAAE2B5003128C1 /* SceneDelegate.swift */,
 				26FFA1132CAAE2B5003128C1 /* ViewController.swift */,
-				26FFA1152CAAE2B5003128C1 /* Main.storyboard */,
 				26FFA11B2CAAE2B7003128C1 /* Assets.xcassets */,
-				26FFA11D2CAAE2B7003128C1 /* LaunchScreen.storyboard */,
 				26FFA1202CAAE2B7003128C1 /* Info.plist */,
 				26FFA1182CAAE2B5003128C1 /* banquemisr_challenge05__.xcdatamodeld */,
 			);
@@ -163,6 +161,8 @@
 		26FFA1442CAAE365003128C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				26FFA1152CAAE2B5003128C1 /* Main.storyboard */,
+				26FFA11D2CAAE2B7003128C1 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
