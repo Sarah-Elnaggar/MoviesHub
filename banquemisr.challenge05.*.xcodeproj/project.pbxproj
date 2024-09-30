@@ -17,6 +17,8 @@
 		26FFA12A2CAAE2B8003128C1 /* banquemisr_challenge05__Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1292CAAE2B8003128C1 /* banquemisr_challenge05__Tests.swift */; };
 		26FFA1342CAAE2B8003128C1 /* banquemisr_challenge05__UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1332CAAE2B8003128C1 /* banquemisr_challenge05__UITests.swift */; };
 		26FFA1362CAAE2B8003128C1 /* banquemisr_challenge05__UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1352CAAE2B8003128C1 /* banquemisr_challenge05__UITestsLaunchTests.swift */; };
+		26FFA1512CAAE51D003128C1 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1502CAAE51D003128C1 /* APIManager.swift */; };
+		26FFA1542CAAEA49003128C1 /* EndPointsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1532CAAEA49003128C1 /* EndPointsEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		26FFA12F2CAAE2B8003128C1 /* banquemisr.challenge05.*UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "banquemisr.challenge05.*UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26FFA1332CAAE2B8003128C1 /* banquemisr_challenge05__UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = banquemisr_challenge05__UITests.swift; sourceTree = "<group>"; };
 		26FFA1352CAAE2B8003128C1 /* banquemisr_challenge05__UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = banquemisr_challenge05__UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		26FFA1502CAAE51D003128C1 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		26FFA1532CAAEA49003128C1 /* EndPointsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointsEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		26FFA10E2CAAE2B5003128C1 /* banquemisr.challenge05.* */ = {
 			isa = PBXGroup;
 			children = (
+				26FFA1522CAAEA19003128C1 /* Utilities */,
 				26FFA1482CAAE380003128C1 /* Extensions */,
 				26FFA1452CAAE369003128C1 /* Services */,
 				26FFA1442CAAE365003128C1 /* View */,
@@ -170,6 +175,7 @@
 		26FFA1462CAAE370003128C1 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				26FFA1502CAAE51D003128C1 /* APIManager.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -240,6 +246,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		26FFA1522CAAEA19003128C1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				26FFA1532CAAEA49003128C1 /* EndPointsEnum.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +389,8 @@
 			files = (
 				26FFA1142CAAE2B5003128C1 /* ViewController.swift in Sources */,
 				26FFA11A2CAAE2B5003128C1 /* banquemisr_challenge05__.xcdatamodeld in Sources */,
+				26FFA1512CAAE51D003128C1 /* APIManager.swift in Sources */,
+				26FFA1542CAAEA49003128C1 /* EndPointsEnum.swift in Sources */,
 				26FFA1102CAAE2B5003128C1 /* AppDelegate.swift in Sources */,
 				26FFA1122CAAE2B5003128C1 /* SceneDelegate.swift in Sources */,
 			);
