@@ -19,6 +19,8 @@
 		26FFA1362CAAE2B8003128C1 /* banquemisr_challenge05__UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1352CAAE2B8003128C1 /* banquemisr_challenge05__UITestsLaunchTests.swift */; };
 		26FFA1512CAAE51D003128C1 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1502CAAE51D003128C1 /* APIManager.swift */; };
 		26FFA1542CAAEA49003128C1 /* EndPointsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1532CAAEA49003128C1 /* EndPointsEnum.swift */; };
+		26FFA1562CAAECE0003128C1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1552CAAECE0003128C1 /* NetworkManager.swift */; };
+		26FFA1582CAAF0DF003128C1 /* NetworkErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1572CAAF0DF003128C1 /* NetworkErrorEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		26FFA1352CAAE2B8003128C1 /* banquemisr_challenge05__UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = banquemisr_challenge05__UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		26FFA1502CAAE51D003128C1 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		26FFA1532CAAEA49003128C1 /* EndPointsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointsEnum.swift; sourceTree = "<group>"; };
+		26FFA1552CAAECE0003128C1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		26FFA1572CAAF0DF003128C1 /* NetworkErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				26FFA1502CAAE51D003128C1 /* APIManager.swift */,
+				26FFA1552CAAECE0003128C1 /* NetworkManager.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				26FFA1532CAAEA49003128C1 /* EndPointsEnum.swift */,
+				26FFA1572CAAF0DF003128C1 /* NetworkErrorEnum.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -389,7 +395,9 @@
 			files = (
 				26FFA1142CAAE2B5003128C1 /* ViewController.swift in Sources */,
 				26FFA11A2CAAE2B5003128C1 /* banquemisr_challenge05__.xcdatamodeld in Sources */,
+				26FFA1582CAAF0DF003128C1 /* NetworkErrorEnum.swift in Sources */,
 				26FFA1512CAAE51D003128C1 /* APIManager.swift in Sources */,
+				26FFA1562CAAECE0003128C1 /* NetworkManager.swift in Sources */,
 				26FFA1542CAAEA49003128C1 /* EndPointsEnum.swift in Sources */,
 				26FFA1102CAAE2B5003128C1 /* AppDelegate.swift in Sources */,
 				26FFA1122CAAE2B5003128C1 /* SceneDelegate.swift in Sources */,
