@@ -6,36 +6,134 @@
 //
 
 import Foundation
+import CoreData
+import Network
 
-protocol MoviesListProtocol {
-    func getMoviesList()
-}
 
-class MoviesListViewModel: MoviesListProtocol {
+class MoviesListViewModel {
     var networkManager: NetworkProtocol?
     var apiManager: APIManagerProtocol?
     var screenType: EndPoint?
-    var bindToViewController: (() -> Void) = {}
+    var movieType: String?
+    var bindResultToViewController: (() -> Void) = {}
+    var bindErrorToViewController: ((String) -> Void)?
     var movies: [Movie]? = [] {
         didSet {
-            bindToViewController()
+            bindResultToViewController()
         }
     }
     
-    init(screenType: EndPoint?) {
-        networkManager = NetworkManager()
-        apiManager = APIManager()
+    private let monitor = NWPathMonitor()
+    private var isConnected: Bool = false
+    private let queue = DispatchQueue.global(qos: .background)
+    
+    init(screenType: EndPoint?, networkManager: NetworkProtocol = NetworkManager(), apiManager: APIManagerProtocol = APIManager()) {
+        self.networkManager = networkManager
+        self.apiManager = apiManager
         self.screenType = screenType
+        
+        monitor.pathUpdateHandler = { [weak self] path in
+            self?.isConnected = (path.status == .satisfied)
+        }
+        monitor.start(queue: queue)
+    }
+           
+    func getMoviesList() {
+        print("Is connected to the internet: \(isConnected)")
+        
+        if isConnected {
+            getMoviesListFromAPI()
+        } else {
+            // Perform additional reachability check
+            isReachable { [weak self] reachable in
+                DispatchQueue.main.async {
+                    if reachable {
+                        self?.getMoviesListFromAPI()
+                    } else {
+                        self?.getMoviesListFromCoreData()
+                    }
+                }
+            }
+        }
     }
     
-    func getMoviesList() {
-        let url = apiManager?.getUrl(for: screenType ?? .nowPlaying)
-        networkManager?.fetch(url: url ?? "", type: MovieResponse.self, completion: { [weak self] result, error in
-            guard let result = result else {
+    private func getMoviesListFromAPI() {
+        guard let url = apiManager?.getUrl(for: screenType ?? .nowPlaying) else {
+            bindErrorToViewController?("Invalid URL.")
+            return
+        }
+        networkManager?.fetch(url: url, type: MovieResponse.self, completion: { [weak self] result, error in
+            if let error = error {
+                print("Network error: \(error.localizedDescription)")
+                self?.bindErrorToViewController?("Network error: \(error.localizedDescription)")
                 return
             }
+                        
+            guard let result = result else {
+                print("No result returned from the API")
+                self?.bindErrorToViewController?("No result returned from the API.")
+                return
+            }
+            
             self?.movies = result.results
+            self?.bindResultToViewController()
+            DispatchQueue.main.async {
+                CoreDataManager.shared.deleteAllMovies(movieType: self?.movieType ?? "")
+            }
+            if let fetchedMovies = result.results {
+                DispatchQueue.main.async {
+                    self?.storeMoviesToCoreData(movies: fetchedMovies)
+                }
+            }
         })
     }
+    
+    private func getMoviesListFromCoreData() {
+        DispatchQueue.main.async {
+            CoreDataManager.shared.getMoviesList(movieType: self.movieType ?? "") { [weak self] result in
+                switch result {
+                case .success(let storedMovies):
+                    if storedMovies == [] {
+                        print("Movies List not found in Core Data.")
+                        self?.bindErrorToViewController?("No Connection ! !\n Movies List not found in Core Data.")
+                    }
+                    self?.movies = storedMovies.map { movie in
+                        var mov = Movie()
+                        mov.id = movie.value(forKey: "id") as? Int
+                        mov.title = movie.value(forKey: "title") as? String
+                        mov.poster_path = movie.value(forKey: "poster_path") as? String
+                        mov.release_date = movie.value(forKey: "release_date") as? String
+                        return mov
+                    }
+                    self?.bindResultToViewController()
+                    
+                case .failure(let error):
+                    print("Failed to fetch movies from Core Data: \(error.localizedDescription)")
+                    self?.bindErrorToViewController?("No Connection ! ! \n Failed to fetch movies from Core Data: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    private func storeMoviesToCoreData(movies: [Movie]) {
+        DispatchQueue.main.async {
+            for movie in movies {
+                CoreDataManager.shared.storeMovieInList(movie: movie, movieType: self.movieType ?? "")
+            }
+        }
+    }
+    
+    private func isReachable(completion: @escaping (Bool) -> Void) {
+        var request = URLRequest(url: URL(string: "https://www.google.com")!)
+        request.timeoutInterval = 5.0
+        URLSession.shared.dataTask(with: request) { (_, response, _) in
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }.resume()
+    }
+    
 }
 

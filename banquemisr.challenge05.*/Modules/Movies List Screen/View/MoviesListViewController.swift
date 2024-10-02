@@ -48,12 +48,24 @@ class MoviesListViewController: UIViewController, UITabBarDelegate, UITableViewD
        }
     
     func bindViewModel() {
-        moviesViewModel.bindToViewController = { [weak self] in
+        moviesViewModel.bindResultToViewController = { [weak self] in
             DispatchQueue.main.async {
                 self?.indicator?.stopAnimating()
                 self?.MoviesTableView.reloadData()
             }
         }
+        
+        moviesViewModel.bindErrorToViewController = { [weak self] errorMessage in
+            DispatchQueue.main.async {
+                self?.showErrorAlert(message: errorMessage)
+            }
+        }
+    }
+    
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -64,17 +76,20 @@ class MoviesListViewController: UIViewController, UITabBarDelegate, UITableViewD
         indicator?.startAnimating()
         
         switch index {
-        case 1: navigationItem.title = "Upcoming Movies"
+        case 1: 
+            navigationItem.title = "Upcoming Movies"
             moviesViewModel.screenType = .upcoming
-            moviesViewModel.getMoviesList()
-        case 2: navigationItem.title = "Popular Movies"
+            moviesViewModel.movieType = "Upcoming"
+        case 2: 
+            navigationItem.title = "Popular Movies"
             moviesViewModel.screenType = .popular
-            moviesViewModel.getMoviesList()
+            moviesViewModel.movieType = "Popular"
         default:
             navigationItem.title = "Now Playing Movies"
             moviesViewModel.screenType = .nowPlaying
-            moviesViewModel.getMoviesList()
+            moviesViewModel.movieType = "Now Playing"
         }
+        moviesViewModel.getMoviesList()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

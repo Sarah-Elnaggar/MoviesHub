@@ -21,6 +21,7 @@ extension UIImageView {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let error = error {
+                print("Error downloading image: \(error)")
                 DispatchQueue.main.async {
                     self.image = placeholderImage
                 }
@@ -28,6 +29,7 @@ extension UIImageView {
             }
             
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                print("Invalid response")
                 DispatchQueue.main.async {
                     self.image = placeholderImage
                 }
@@ -36,6 +38,7 @@ extension UIImageView {
             
             guard let data = data, let image = UIImage(data: data) else {
                 DispatchQueue.main.async {
+                    print("No data or invalid image")
                     self.image = placeholderImage
                 }
                 return

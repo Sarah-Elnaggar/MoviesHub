@@ -10,6 +10,7 @@ import UIKit
 class MovieDetailsViewController: UIViewController {
 
     @IBOutlet weak var movieImage: UIImageView!
+    @IBOutlet weak var moviePoster: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieDate: UILabel!
     @IBOutlet weak var movieGenres: UILabel!
@@ -40,13 +41,26 @@ class MovieDetailsViewController: UIViewController {
     }
         
     func bindViewModel() {
-        movieDetailsViewModel.bindToViewController = { [weak self] in
+        movieDetailsViewModel.bindResultToViewController = { [weak self] in
             DispatchQueue.main.async {
                 self?.indicator?.stopAnimating()
                 self?.updateUI()
             }
         }
+        
+        movieDetailsViewModel.bindErrorToViewController = { [weak self] errorMessage in
+            DispatchQueue.main.async {
+                self?.showErrorAlert(message: errorMessage)
+            }
+        }
     }
+    
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     func updateUI() {
         guard let movie = movieDetailsViewModel.movie else { return }
@@ -63,11 +77,20 @@ class MovieDetailsViewController: UIViewController {
             movieRuntime.text = ""
         }
         
+        movieImage.alpha = 0.7
         if let imageUrl = movie.backdrop_path {
             let fullImageUrl = "https://image.tmdb.org/t/p/w500\(imageUrl)"
             self.movieImage.downloadImage(from: fullImageUrl)
         } else {
             self.movieImage.image = UIImage(named: "MovieHubIcon")
+        }
+        
+        moviePoster.layer.cornerRadius = 20
+        if let imageUrl = movie.poster_path {
+            let fullImageUrl = "https://image.tmdb.org/t/p/w500\(imageUrl)"
+            self.moviePoster.downloadImage(from: fullImageUrl)
+        } else {
+            self.moviePoster.image = UIImage(named: "MovieHubIcon")
         }
         
         if let genres = movie.genres {
