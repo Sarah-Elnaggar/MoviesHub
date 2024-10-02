@@ -29,6 +29,7 @@
 		26FFA16D2CAB426C003128C1 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA16C2CAB426C003128C1 /* MovieDetails.swift */; };
 		26FFA16F2CAB4297003128C1 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA16E2CAB4297003128C1 /* MovieDetailsViewModel.swift */; };
 		26FFA1712CAB42B0003128C1 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1702CAB42B0003128C1 /* MovieDetailsViewController.swift */; };
+		26FFA1732CAC00A0003128C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1722CAC00A0003128C1 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		26FFA16C2CAB426C003128C1 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		26FFA16E2CAB4297003128C1 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		26FFA1702CAB42B0003128C1 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		26FFA1722CAC00A0003128C1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +138,6 @@
 				26FFA1132CAAE2B5003128C1 /* ViewController.swift */,
 				26FFA11B2CAAE2B7003128C1 /* Assets.xcassets */,
 				26FFA1202CAAE2B7003128C1 /* Info.plist */,
-				26FFA1182CAAE2B5003128C1 /* banquemisr_challenge05__.xcdatamodeld */,
 			);
 			path = "banquemisr.challenge05.*";
 			sourceTree = "<group>";
@@ -205,6 +206,8 @@
 		26FFA1472CAAE377003128C1 /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				26FFA1182CAAE2B5003128C1 /* banquemisr_challenge05__.xcdatamodeld */,
+				26FFA1722CAC00A0003128C1 /* CoreDataManager.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				26FFA1142CAAE2B5003128C1 /* ViewController.swift in Sources */,
 				26FFA16D2CAB426C003128C1 /* MovieDetails.swift in Sources */,
 				26FFA11A2CAAE2B5003128C1 /* banquemisr_challenge05__.xcdatamodeld in Sources */,
+				26FFA1732CAC00A0003128C1 /* CoreDataManager.swift in Sources */,
 				26FFA1582CAAF0DF003128C1 /* NetworkErrorEnum.swift in Sources */,
 				26FFA15A2CAB20A1003128C1 /* MoviesListViewModel.swift in Sources */,
 				26FFA16F2CAB4297003128C1 /* MovieDetailsViewModel.swift in Sources */,

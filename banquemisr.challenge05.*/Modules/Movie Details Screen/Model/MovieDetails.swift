@@ -8,18 +8,18 @@
 import Foundation
 
 struct MovieDetails: Codable {
-    let id: Int?
-    let title: String?
-    let overview: String?
-    let genres: [Genre]?
-    let runtime: Int?
-    let poster_path: String?
-    let backdrop_path: String?
-    let release_date: String?
-    let vote_average: Double?
+    var id: Int?
+    var title: String?
+    var overview: String?
+    var genres: [Genre]?
+    var runtime: Int?
+    var poster_path: String?
+    var backdrop_path: String?
+    var release_date: String?
+    var vote_average: Double?
 }
 
 struct Genre: Codable {
-    let id: Int?
-    let name: String?
+    var id: Int?
+    var name: String?
 }
