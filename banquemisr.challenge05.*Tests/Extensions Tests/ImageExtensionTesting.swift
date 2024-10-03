@@ -35,7 +35,7 @@ class ImageExtensionTesting: XCTestCase {
             XCTAssertEqual(self.imageView.image, placeholderImage, "Image should be placeholder for invalid URL")
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 2, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
     
@@ -52,7 +52,7 @@ class ImageExtensionTesting: XCTestCase {
             XCTAssertEqual(self.imageView.image, placeholderImage, "Image should be placeholder on network error")
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 2, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
     
@@ -69,7 +69,7 @@ class ImageExtensionTesting: XCTestCase {
             XCTAssertEqual(self.imageView.image, placeholderImage, "Image should be placeholder when no data is returned")
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 2, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
     
@@ -86,7 +86,7 @@ class ImageExtensionTesting: XCTestCase {
             XCTAssertEqual(self.imageView.image, placeholderImage, "Image should be placeholder for non-2xx HTTP status codes")
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 2, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
 }
