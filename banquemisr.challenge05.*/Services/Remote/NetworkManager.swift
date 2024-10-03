@@ -14,6 +14,12 @@ protocol NetworkProtocol {
 
 class NetworkManager: NetworkProtocol {
     
+    private let session: URLSession
+       
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
+    
     func fetch<T: Codable> (url: String, type: T.Type, completion: @escaping (T?, Error?) -> Void) {
         
         guard let url = URL(string: url) else {
@@ -22,7 +28,7 @@ class NetworkManager: NetworkProtocol {
         }
         print("Fetching data from URL: \(url)")
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(nil, NetworkError.other(error))
                 return

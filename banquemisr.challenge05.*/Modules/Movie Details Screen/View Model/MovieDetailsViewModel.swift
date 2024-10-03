@@ -13,6 +13,7 @@ import Network
 class MovieDetailsViewModel {
     var networkManager: NetworkProtocol?
     var apiManager: APIManagerProtocol?
+    var coreDataManager: CoreDataManagerProtocol?
     var bindResultToViewController: (() -> Void) = {}
     var bindErrorToViewController: ((String) -> ())?
     var movie: MovieDetails? {
@@ -25,10 +26,13 @@ class MovieDetailsViewModel {
     private let monitor = NWPathMonitor()
     private var isConnected: Bool = false
     private let queue = DispatchQueue.global(qos: .background)
+    private var reachabilityService: ReachabilityServiceProtocol
     
-    init(movieID: Int, networkManager: NetworkProtocol = NetworkManager(), apiManager: APIManagerProtocol = APIManager()) {
+    init(movieID: Int, networkManager: NetworkProtocol = NetworkManager(), apiManager: APIManagerProtocol = APIManager(), coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared, reachabilityService: ReachabilityServiceProtocol = DefaultReachabilityService()) {
         self.networkManager = networkManager
         self.apiManager = apiManager
+        self.coreDataManager = coreDataManager
+        self.reachabilityService = reachabilityService
         self.movieID = movieID
         
         monitor.pathUpdateHandler = { [weak self] path in
@@ -37,6 +41,7 @@ class MovieDetailsViewModel {
         monitor.start(queue: queue)
     }
     
+    
     func getMovieDetails() {
         print("Is connected to the internet: \(isConnected)")
         
@@ -44,7 +49,7 @@ class MovieDetailsViewModel {
             getMovieDetailsFromAPI()
         } else {
             // Perform additional reachability check
-            isReachable { [weak self] reachable in
+            reachabilityService.isReachable { [weak self] reachable in
                 DispatchQueue.main.async {
                     if reachable {
                         self?.getMovieDetailsFromAPI()
@@ -80,6 +85,7 @@ class MovieDetailsViewModel {
             }
         })
     }
+    
     
     private func getMovieDetailsFromCoreData() {
         CoreDataManager.shared.getMovieDetails(movieID: movieID) { [weak self] result in
@@ -119,16 +125,5 @@ class MovieDetailsViewModel {
     private func storeMovieDetailsToCoreData(movie: MovieDetails) {
         CoreDataManager.shared.storeMovieDetails(movie: movie)
     }
-    
-    private func isReachable(completion: @escaping (Bool) -> Void) {
-        var request = URLRequest(url: URL(string: "https://www.google.com")!)
-        request.timeoutInterval = 5.0
-        URLSession.shared.dataTask(with: request) { (_, response, _) in
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }.resume()
-    }
+   
 }
