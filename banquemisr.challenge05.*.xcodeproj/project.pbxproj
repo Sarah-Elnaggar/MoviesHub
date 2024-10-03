@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26B113512CADDB4500C27B71 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B113502CADDB4500C27B71 /* MockNetworkManager.swift */; };
+		26B113532CADDB5400C27B71 /* MockAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B113522CADDB5400C27B71 /* MockAPIManager.swift */; };
+		26B113552CADDB6A00C27B71 /* MockCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B113542CADDB6A00C27B71 /* MockCoreDataManager.swift */; };
+		26B113582CADE4F400C27B71 /* ImageExtensionTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B113572CADE4F400C27B71 /* ImageExtensionTesting.swift */; };
+		26B1135B2CADF65600C27B71 /* ReachabilityServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1135A2CADF65600C27B71 /* ReachabilityServices.swift */; };
 		26FFA1102CAAE2B5003128C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA10F2CAAE2B5003128C1 /* AppDelegate.swift */; };
 		26FFA1122CAAE2B5003128C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1112CAAE2B5003128C1 /* SceneDelegate.swift */; };
 		26FFA1142CAAE2B5003128C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1132CAAE2B5003128C1 /* ViewController.swift */; };
@@ -30,6 +35,12 @@
 		26FFA16F2CAB4297003128C1 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA16E2CAB4297003128C1 /* MovieDetailsViewModel.swift */; };
 		26FFA1712CAB42B0003128C1 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1702CAB42B0003128C1 /* MovieDetailsViewController.swift */; };
 		26FFA1732CAC00A0003128C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1722CAC00A0003128C1 /* CoreDataManager.swift */; };
+		26FFA17C2CADB2D9003128C1 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA17B2CADB2D9003128C1 /* NetworkTests.swift */; };
+		26FFA17E2CADB2F0003128C1 /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA17D2CADB2F0003128C1 /* MockNetwork.swift */; };
+		26FFA1802CADB31D003128C1 /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA17F2CADB31D003128C1 /* APIManagerTests.swift */; };
+		26FFA1822CADB32C003128C1 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1812CADB32C003128C1 /* CoreDataTests.swift */; };
+		26FFA1862CADB366003128C1 /* MoviesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1852CADB366003128C1 /* MoviesListViewModelTests.swift */; };
+		26FFA1882CADB37C003128C1 /* MovieDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA1872CADB37C003128C1 /* MovieDetailsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +61,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26B113502CADDB4500C27B71 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
+		26B113522CADDB5400C27B71 /* MockAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIManager.swift; sourceTree = "<group>"; };
+		26B113542CADDB6A00C27B71 /* MockCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataManager.swift; sourceTree = "<group>"; };
+		26B113572CADE4F400C27B71 /* ImageExtensionTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensionTesting.swift; sourceTree = "<group>"; };
+		26B1135A2CADF65600C27B71 /* ReachabilityServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityServices.swift; sourceTree = "<group>"; };
 		26FFA10C2CAAE2B5003128C1 /* banquemisr.challenge05.*.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "banquemisr.challenge05.*.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26FFA10F2CAAE2B5003128C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26FFA1112CAAE2B5003128C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +93,12 @@
 		26FFA16E2CAB4297003128C1 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		26FFA1702CAB42B0003128C1 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		26FFA1722CAC00A0003128C1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		26FFA17B2CADB2D9003128C1 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		26FFA17D2CADB2F0003128C1 /* MockNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
+		26FFA17F2CADB31D003128C1 /* APIManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
+		26FFA1812CADB32C003128C1 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		26FFA1852CADB366003128C1 /* MoviesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModelTests.swift; sourceTree = "<group>"; };
+		26FFA1872CADB37C003128C1 /* MovieDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +126,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26B1134F2CADDB2A00C27B71 /* Mocking */ = {
+			isa = PBXGroup;
+			children = (
+				26B113502CADDB4500C27B71 /* MockNetworkManager.swift */,
+				26B113522CADDB5400C27B71 /* MockAPIManager.swift */,
+				26B113542CADDB6A00C27B71 /* MockCoreDataManager.swift */,
+			);
+			path = Mocking;
+			sourceTree = "<group>";
+		};
+		26B113562CADE4B400C27B71 /* Extensions Tests */ = {
+			isa = PBXGroup;
+			children = (
+				26B113572CADE4F400C27B71 /* ImageExtensionTesting.swift */,
+			);
+			path = "Extensions Tests";
+			sourceTree = "<group>";
+		};
 		26FFA1032CAAE2B5003128C1 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +185,13 @@
 		26FFA1282CAAE2B8003128C1 /* banquemisr.challenge05.*Tests */ = {
 			isa = PBXGroup;
 			children = (
+				26B1134F2CADDB2A00C27B71 /* Mocking */,
+				26FFA1772CADB22D003128C1 /* APIManager Tests */,
+				26FFA1762CADB1FB003128C1 /* Network Tests */,
+				26FFA1782CADB24B003128C1 /* CoreData Tests */,
+				26FFA1792CADB261003128C1 /* MoviesList Tests */,
+				26FFA17A2CADB275003128C1 /* MovieDetails Tests */,
+				26B113562CADE4B400C27B71 /* Extensions Tests */,
 				26FFA1292CAAE2B8003128C1 /* banquemisr_challenge05__Tests.swift */,
 			);
 			path = "banquemisr.challenge05.*Tests";
@@ -199,6 +246,7 @@
 			children = (
 				26FFA1502CAAE51D003128C1 /* APIManager.swift */,
 				26FFA1552CAAECE0003128C1 /* NetworkManager.swift */,
+				26B1135A2CADF65600C27B71 /* ReachabilityServices.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -287,6 +335,47 @@
 				26FFA1572CAAF0DF003128C1 /* NetworkErrorEnum.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		26FFA1762CADB1FB003128C1 /* Network Tests */ = {
+			isa = PBXGroup;
+			children = (
+				26FFA17B2CADB2D9003128C1 /* NetworkTests.swift */,
+				26FFA17D2CADB2F0003128C1 /* MockNetwork.swift */,
+			);
+			path = "Network Tests";
+			sourceTree = "<group>";
+		};
+		26FFA1772CADB22D003128C1 /* APIManager Tests */ = {
+			isa = PBXGroup;
+			children = (
+				26FFA17F2CADB31D003128C1 /* APIManagerTests.swift */,
+			);
+			path = "APIManager Tests";
+			sourceTree = "<group>";
+		};
+		26FFA1782CADB24B003128C1 /* CoreData Tests */ = {
+			isa = PBXGroup;
+			children = (
+				26FFA1812CADB32C003128C1 /* CoreDataTests.swift */,
+			);
+			path = "CoreData Tests";
+			sourceTree = "<group>";
+		};
+		26FFA1792CADB261003128C1 /* MoviesList Tests */ = {
+			isa = PBXGroup;
+			children = (
+				26FFA1852CADB366003128C1 /* MoviesListViewModelTests.swift */,
+			);
+			path = "MoviesList Tests";
+			sourceTree = "<group>";
+		};
+		26FFA17A2CADB275003128C1 /* MovieDetails Tests */ = {
+			isa = PBXGroup;
+			children = (
+				26FFA1872CADB37C003128C1 /* MovieDetailsViewModelTests.swift */,
+			);
+			path = "MovieDetails Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,6 +515,7 @@
 				26FFA11A2CAAE2B5003128C1 /* banquemisr_challenge05__.xcdatamodeld in Sources */,
 				26FFA1732CAC00A0003128C1 /* CoreDataManager.swift in Sources */,
 				26FFA1582CAAF0DF003128C1 /* NetworkErrorEnum.swift in Sources */,
+				26B1135B2CADF65600C27B71 /* ReachabilityServices.swift in Sources */,
 				26FFA15A2CAB20A1003128C1 /* MoviesListViewModel.swift in Sources */,
 				26FFA16F2CAB4297003128C1 /* MovieDetailsViewModel.swift in Sources */,
 				26FFA1512CAAE51D003128C1 /* APIManager.swift in Sources */,
@@ -444,7 +534,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B113552CADDB6A00C27B71 /* MockCoreDataManager.swift in Sources */,
+				26FFA1882CADB37C003128C1 /* MovieDetailsViewModelTests.swift in Sources */,
+				26FFA1862CADB366003128C1 /* MoviesListViewModelTests.swift in Sources */,
+				26B113532CADDB5400C27B71 /* MockAPIManager.swift in Sources */,
+				26B113512CADDB4500C27B71 /* MockNetworkManager.swift in Sources */,
+				26FFA1802CADB31D003128C1 /* APIManagerTests.swift in Sources */,
+				26FFA17E2CADB2F0003128C1 /* MockNetwork.swift in Sources */,
+				26FFA17C2CADB2D9003128C1 /* NetworkTests.swift in Sources */,
 				26FFA12A2CAAE2B8003128C1 /* banquemisr_challenge05__Tests.swift in Sources */,
+				26FFA1822CADB32C003128C1 /* CoreDataTests.swift in Sources */,
+				26B113582CADE4F400C27B71 /* ImageExtensionTesting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

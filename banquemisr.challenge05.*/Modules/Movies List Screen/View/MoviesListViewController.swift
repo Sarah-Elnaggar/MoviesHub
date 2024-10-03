@@ -57,12 +57,12 @@ class MoviesListViewController: UIViewController, UITabBarDelegate, UITableViewD
         
         moviesViewModel.bindErrorToViewController = { [weak self] errorMessage in
             DispatchQueue.main.async {
-                self?.showErrorAlert(message: errorMessage)
+                self?.showAlert(message: errorMessage)
             }
         }
     }
     
-    private func showErrorAlert(message: String) {
+    private func showAlert(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
@@ -73,8 +73,6 @@ class MoviesListViewController: UIViewController, UITabBarDelegate, UITableViewD
     }
 
     func showView(for index: Int) {
-        indicator?.startAnimating()
-        
         switch index {
         case 1: 
             navigationItem.title = "Upcoming Movies"

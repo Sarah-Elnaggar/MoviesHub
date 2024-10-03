@@ -15,6 +15,7 @@ class MoviesListViewModel {
     var apiManager: APIManagerProtocol?
     var screenType: EndPoint?
     var movieType: String?
+    var coreDataManager: CoreDataManagerProtocol?
     var bindResultToViewController: (() -> Void) = {}
     var bindErrorToViewController: ((String) -> Void)?
     var movies: [Movie]? = [] {
@@ -26,11 +27,14 @@ class MoviesListViewModel {
     private let monitor = NWPathMonitor()
     private var isConnected: Bool = false
     private let queue = DispatchQueue.global(qos: .background)
+    private var reachabilityService: ReachabilityServiceProtocol
     
-    init(screenType: EndPoint?, networkManager: NetworkProtocol = NetworkManager(), apiManager: APIManagerProtocol = APIManager()) {
+    init(screenType: EndPoint?, networkManager: NetworkProtocol = NetworkManager(), apiManager: APIManagerProtocol = APIManager(), coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared, reachabilityService: ReachabilityServiceProtocol = DefaultReachabilityService()) {
         self.networkManager = networkManager
         self.apiManager = apiManager
         self.screenType = screenType
+        self.coreDataManager = coreDataManager
+        self.reachabilityService = reachabilityService
         
         monitor.pathUpdateHandler = { [weak self] path in
             self?.isConnected = (path.status == .satisfied)
@@ -45,7 +49,7 @@ class MoviesListViewModel {
             getMoviesListFromAPI()
         } else {
             // Perform additional reachability check
-            isReachable { [weak self] reachable in
+            reachabilityService.isReachable { [weak self] reachable in
                 DispatchQueue.main.async {
                     if reachable {
                         self?.getMoviesListFromAPI()
@@ -89,8 +93,8 @@ class MoviesListViewModel {
     }
     
     private func getMoviesListFromCoreData() {
-        DispatchQueue.main.async {
-            CoreDataManager.shared.getMoviesList(movieType: self.movieType ?? "") { [weak self] result in
+        DispatchQueue.main.async { [self] in
+            coreDataManager?.getMoviesList(movieType: self.movieType ?? "") { [weak self] result in
                 switch result {
                 case .success(let storedMovies):
                     if storedMovies == [] {
@@ -118,22 +122,9 @@ class MoviesListViewModel {
     private func storeMoviesToCoreData(movies: [Movie]) {
         DispatchQueue.main.async {
             for movie in movies {
-                CoreDataManager.shared.storeMovieInList(movie: movie, movieType: self.movieType ?? "")
+                self.coreDataManager?.storeMovieInList(movie: movie, movieType: self.movieType ?? "")
             }
         }
     }
-    
-    private func isReachable(completion: @escaping (Bool) -> Void) {
-        var request = URLRequest(url: URL(string: "https://www.google.com")!)
-        request.timeoutInterval = 5.0
-        URLSession.shared.dataTask(with: request) { (_, response, _) in
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }.resume()
-    }
-    
 }
 
